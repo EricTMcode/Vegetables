@@ -35,12 +35,6 @@ struct VegetableDetailScreen: View {
                 .frame(maxWidth: .infinity, maxHeight: 300)
                 .padding(.bottom, 8)
 
-                Text(vegetable.name)
-                    .font(.largeTitle)
-                    .bold()
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
                 Text(vegetable.body)
                     .font(.body)
                     .foregroundStyle(.secondary)
@@ -80,6 +74,7 @@ struct VegetableDetailScreen: View {
             }
             .padding()
         }
+        .navigationTitle(vegetable.name)
     }
 }
 
@@ -121,5 +116,7 @@ struct DetailRow: View {
 }
 
 #Preview {
-    VegetableDetailScreen(vegetable: PreviewData.loadVegetables()[0])
+    NavigationStack {
+        VegetableDetailScreen(vegetable: PreviewData.loadVegetables()[0])
+    }
 }
