@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  VegetableListScreen.swift
 //  Vegetables
 //
 //  Created by Eric on 10/03/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct VegetableListScreen: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    VegetableListScreen()
 }
