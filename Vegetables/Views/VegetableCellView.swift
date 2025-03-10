@@ -12,10 +12,10 @@ struct VegetableCellView: View {
     let vegetable: Vegetable
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(vegetable.name)
     }
 }
 
 #Preview {
-    VegetableCellView()
+    VegetableCellView(vegetable: PreviewData.loadVegetables()[0])
 }
