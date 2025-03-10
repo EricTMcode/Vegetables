@@ -13,7 +13,7 @@ struct VegetableListScreen: View {
 
     var body: some View {
         List(vegetables) { vegetable in
-            Text(vegetable.name)
+            VegetableCellView(vegetable: vegetable)
         }
         .listStyle(.plain)
         .task {
@@ -24,10 +24,12 @@ struct VegetableListScreen: View {
                 print(error.localizedDescription)
             }
         }
-        .padding()
+        .navigationTitle("Vegetables")
     }
 }
 
 #Preview {
-    VegetableListScreen()
+    NavigationStack {
+        VegetableListScreen()
+    }
 }
