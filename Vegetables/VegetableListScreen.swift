@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct VegetableListScreen: View {
+
+    @State private var vegetables: [Vegetable] = []
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List(vegetables) { vegetable in
+            Text(vegetable.name)
+        }
+        .listStyle(.plain)
+        .task {
+            do {
+                let client = VegetableHTTPClient()
+                vegetables = try await client.fetchVegetables()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
         .padding()
     }
