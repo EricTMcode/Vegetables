@@ -74,6 +74,17 @@ struct VegetableDetailScreen: View {
             }
             .padding()
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title2)
+                        .foregroundStyle(.green)
+                }
+            }
+        }
         .navigationTitle(vegetable.name)
     }
 }
