@@ -54,6 +54,8 @@ struct HarvestCountDownView: View {
                     .foregroundStyle(.secondary)
             }
         }
+        .frame(width: 60, height: 60)
+        .padding()
     }
 }
 

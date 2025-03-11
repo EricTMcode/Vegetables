@@ -27,6 +27,8 @@ struct MyGardenCellView: View {
             }
 
             Spacer()
+
+            HarvestCountDownView(plantingDate: myGardenVegetable.datePlanted, harvestingDays: myGardenVegetable.daysToHarvest)
         }
         .padding()
     }
