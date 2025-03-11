@@ -11,6 +11,8 @@ struct VegetableDetailScreen: View {
 
     let vegetable: Vegetable
 
+    @State private var showSeedOrSeedlingMenu = false
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -77,12 +79,17 @@ struct VegetableDetailScreen: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-
+                    showSeedOrSeedlingMenu = true
                 } label: {
                     Image(systemName: "plus")
                         .font(.title2)
                         .foregroundStyle(.green)
                 }
+            }
+        }
+        .sheet(isPresented: $showSeedOrSeedlingMenu) {
+            SeedOrSeedlingView { option in
+                
             }
         }
         .navigationTitle(vegetable.name)
