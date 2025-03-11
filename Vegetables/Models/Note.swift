@@ -17,11 +17,9 @@ class Note {
 
     var myGardenVegetable: MyGardenVegetable?
 
-    init(title: String, body: String, dateCreated: Date, photo: Data? = nil, myGardenVegetable: MyGardenVegetable? = nil) {
+    init(title: String, body: String, dateCreated: Date = Date()) {
         self.title = title
         self.body = body
         self.dateCreated = dateCreated
-        self.photo = photo
-        self.myGardenVegetable = myGardenVegetable
     }
 }
