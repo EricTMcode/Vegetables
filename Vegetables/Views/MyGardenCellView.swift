@@ -13,8 +13,22 @@ struct MyGardenCellView: View {
 
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
-            CircularAsyncImage(url: myGardenVegetable.vegetable.thumbnailImage)
+            CircularAsyncImageView(url: myGardenVegetable.vegetable.thumbnailImage)
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(myGardenVegetable.vegetable.name)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+
+                HStack {
+                    Image(systemName: myGardenVegetable.plantOption.icon)
+                        .foregroundStyle(.green)
+                }
+            }
+
+            Spacer()
         }
+        .padding()
     }
 }
 

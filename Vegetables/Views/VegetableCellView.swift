@@ -13,7 +13,7 @@ struct VegetableCellView: View {
     
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
-            CircularAsyncImage(url: vegetable.thumbnailImage)
+            CircularAsyncImageView(url: vegetable.thumbnailImage)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(vegetable.name)

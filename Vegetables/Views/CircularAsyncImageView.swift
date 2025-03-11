@@ -1,5 +1,5 @@
 //
-//  CircularAsyncImage.swift
+//  CircularAsyncImageView.swift
 //  Vegetables
 //
 //  Created by Eric on 11/03/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CircularAsyncImage: View {
+struct CircularAsyncImageView: View {
 
     let url: URL
 
@@ -56,5 +56,5 @@ struct CircularAsyncImage: View {
 }
 
 #Preview {
-    CircularAsyncImage(url: URL(string: "https://www.azamsharp.com/images/carrot.png")!)
+    CircularAsyncImageView(url: URL(string: "https://www.azamsharp.com/images/carrot.png")!)
 }
