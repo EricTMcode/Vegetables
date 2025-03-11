@@ -10,7 +10,7 @@ import SwiftData
 
 let previewContainer: ModelContainer = {
 
-    let container = try! ModelContainer(for: Vegetable.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let container = try! ModelContainer(for: Vegetable.self, MyGardenVegetable.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     return container
 
 }()
