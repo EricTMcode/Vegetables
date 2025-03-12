@@ -23,7 +23,9 @@ struct NoteListScreen: View {
                 }
             }
             .sheet(isPresented: $addNotePresented) {
-                AddNoteScreen(myGardenVegetable: myGardenVegetable)
+                NavigationStack {
+                    AddNoteScreen(myGardenVegetable: myGardenVegetable)
+                }
             }
     }
 }

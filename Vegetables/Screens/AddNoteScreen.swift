@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddNoteScreen: View {
 
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
 
     let myGardenVegetable: MyGardenVegetable
@@ -16,6 +17,13 @@ struct AddNoteScreen: View {
     @State private var noteTitle: String = ""
     @State private var noteBody: String = ""
 
+    private func saveNote() {
+        let note = Note(title: noteTitle, body: noteBody)
+        myGardenVegetable.notes?.append(note)
+        modelContext.insert(note)
+        try? modelContext.save()
+        dismiss()
+    }
 
     var body: some View {
         Form {
@@ -33,7 +41,7 @@ struct AddNoteScreen: View {
 
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save") {
-
+                    saveNote()
                 }
             }
         }
@@ -43,5 +51,6 @@ struct AddNoteScreen: View {
 #Preview {
     NavigationStack {
         AddNoteScreen(myGardenVegetable: MyGardenVegetable(vegetable: PreviewData.loadVegetables()[0], plantOption: .seed))
+            .modelContainer(previewContainer)
     }
 }
