@@ -9,13 +9,39 @@ import SwiftUI
 
 struct AddNoteScreen: View {
 
+    @Environment(\.dismiss) private var dismiss
+
     let myGardenVegetable: MyGardenVegetable
 
+    @State private var noteTitle: String = ""
+    @State private var noteBody: String = ""
+
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            TextField("Title", text: $noteTitle)
+            TextEditor(text: $noteBody)
+                .frame(minHeight: 200)
+        }
+        .toolbar {
+            
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Cancel") {
+                    dismiss()
+                }
+            }
+
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Save") {
+
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    AddNoteScreen(myGardenVegetable: MyGardenVegetable(vegetable: PreviewData.loadVegetables()[0], plantOption: .seed))
+    NavigationStack {
+        AddNoteScreen(myGardenVegetable: MyGardenVegetable(vegetable: PreviewData.loadVegetables()[0], plantOption: .seed))
+    }
 }
