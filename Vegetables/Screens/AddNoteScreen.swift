@@ -21,6 +21,7 @@ struct AddNoteScreen: View {
 
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @State private var uiImage: UIImage?
+    @State private var imageData: Data?
 
     private func saveNote() {
         let note = Note(title: noteTitle, body: noteBody)
@@ -48,12 +49,23 @@ struct AddNoteScreen: View {
                 }
             }
             .buttonStyle(.borderless)
+
+            if let uiImage {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .frame(maxWidth: 300, maxHeight: 300)
+                    .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 5)
+                    .padding()
+            }
         }
         .task(id: selectedPhotoItem) {
             if let selectedPhotoItem {
                 do {
                     if let data = try await selectedPhotoItem.loadTransferable(type: Data.self) {
                         uiImage = UIImage(data: data)
+                        imageData = data
                     }
                 } catch {
                     print(error.localizedDescription)
