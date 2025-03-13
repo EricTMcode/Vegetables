@@ -50,6 +50,19 @@ struct NoteCellView: View {
                     .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
                 }
             }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(note.title)
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                Text(note.body)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(2)
+                Text(note.dateCreated, format: .dateTime)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
         }
     }
 }
