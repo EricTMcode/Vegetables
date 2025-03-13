@@ -25,6 +25,10 @@ struct AddNoteScreen: View {
 
     @State private var isCameraSelected = false
 
+    private var isFormValid: Bool {
+        !noteTitle.isEmptyOrWhitespace && !noteBody.isEmptyOrWhitespace
+    }
+
     private func saveNote() {
         let note = Note(title: noteTitle, body: noteBody)
         note.photo = imageData
@@ -79,6 +83,8 @@ struct AddNoteScreen: View {
                     .padding()
             }
         }
+        .navigationTitle("\(myGardenVegetable.vegetable.name) Note")
+        .navigationBarTitleDisplayMode(.inline)
         .task(id: selectedPhotoItem) {
             if let selectedPhotoItem {
                 do {
@@ -112,6 +118,7 @@ struct AddNoteScreen: View {
                 Button("Save") {
                     saveNote()
                 }
+                .disabled(!isFormValid)
             }
         }
     }
