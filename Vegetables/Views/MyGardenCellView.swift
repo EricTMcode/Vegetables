@@ -23,6 +23,13 @@ struct MyGardenCellView: View {
                 HStack {
                     Image(systemName: myGardenVegetable.plantOption.icon)
                         .foregroundStyle(.green)
+
+                    if let notes = myGardenVegetable.notes {
+                        if !notes.isEmpty {
+                            Image(systemName: "list.clipboard")
+                                .foregroundStyle(.green)
+                        }
+                    }
                 }
             }
 
