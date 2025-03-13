@@ -5,6 +5,7 @@
 //  Created by Eric on 13/03/2025.
 //
 
+import Foundation
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
@@ -16,7 +17,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType = .camera
 
     func makeCoordinator() -> ImagePicker.Coordinator {
-        return ImagePickerCoordinator(self)
+        ImagePickerCoordinator(self)
     }
 
     func makeUIViewController(context: Context) -> UIImagePickerController {
@@ -27,11 +28,12 @@ struct ImagePicker: UIViewControllerRepresentable {
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
 
     }
 
     class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+
         var picker: ImagePicker
 
         init(_ picker: ImagePicker) {
@@ -45,10 +47,13 @@ struct ImagePicker: UIViewControllerRepresentable {
             }
 
             self.picker.dismiss()
+
         }
 
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             self.picker.dismiss()
         }
+
     }
+
 }
