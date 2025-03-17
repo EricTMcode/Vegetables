@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct VegetableTabBarScreen: View {
+    
+    @State private var vegetables: [Vegetable] = []
+    
     var body: some View {
         TabView {
             NavigationStack {
-                VegetableListScreen()
+                VegetableListScreen(vegetables: vegetables)
             }
             .tabItem {
                 Label("Vegetables", systemImage: "leaf")
@@ -31,6 +34,14 @@ struct VegetableTabBarScreen: View {
                 Label("Pests", systemImage: "ladybug")
             }
         }
+        .task {
+            do {
+                let client = VegetableHTTPClient()
+                vegetables = try await client.fetchVegetables()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
@@ -38,4 +49,4 @@ struct VegetableTabBarScreen: View {
     VegetableTabBarScreen()
         .modelContainer(previewContainer)
 }
- 
+
