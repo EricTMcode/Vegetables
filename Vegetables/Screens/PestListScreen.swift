@@ -12,10 +12,13 @@ struct PestListScreen: View {
     let pests: [Pest]
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(pests) { pest in
+            Text(pest.name)
+
+        }
     }
 }
 
 #Preview {
-    PestListScreen(pests: [])
+    PestListScreen(pests: PreviewData.loadPests())
 }
