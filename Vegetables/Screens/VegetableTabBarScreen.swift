@@ -11,6 +11,16 @@ struct VegetableTabBarScreen: View {
 
     @State private var vegetables: [Vegetable] = []
 
+    private var pests: [Pest] {
+
+        let allPests = vegetables.flatMap { $0.pests ?? [] }
+
+         return Array(Set(allPests.map { $0.name.lowercased() }))
+            .compactMap { name in
+                allPests.first { $0.name.lowercased() == name }
+            }
+    }
+
     var body: some View {
         TabView {
             NavigationStack {
@@ -28,7 +38,7 @@ struct VegetableTabBarScreen: View {
             }
             
             NavigationStack {
-                Text("Pests")
+                PestListScreen(pests: pests)
             }
             .tabItem {
                 Label("Pests", systemImage: "ladybug")
