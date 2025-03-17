@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct VegetableTabBarScreen: View {
-    
+
     @State private var vegetables: [Vegetable] = []
-    
+
     var body: some View {
         TabView {
             NavigationStack {
@@ -19,7 +19,7 @@ struct VegetableTabBarScreen: View {
             .tabItem {
                 Label("Vegetables", systemImage: "leaf")
             }
-            
+
             NavigationStack {
                 MyGardenScreen()
             }
