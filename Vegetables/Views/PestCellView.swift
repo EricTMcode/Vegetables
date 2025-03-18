@@ -68,5 +68,5 @@ struct PestCellView: View {
 }
 
 #Preview(traits: .sampleData) {
-    PestCellView(pest: PreviewData.loadPests()[0])
+    PestCellView(pest: PreviewData.loadPests()[1])
 }
