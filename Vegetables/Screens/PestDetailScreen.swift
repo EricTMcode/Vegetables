@@ -24,10 +24,44 @@ struct PestDetailScreen: View {
                 ProgressView()
                     .frame(maxWidth: .infinity, maxHeight: 250)
             }
+            SectionView(iconName: "info.circle", title: "Description", content: pest.body)
+            SectionView(iconName: "exclamationmark.triangle", title: "Symptoms", content: pest.symptoms)
+            SectionView(iconName: "bandage", title: "Treatment", content: pest.treatment)
         }
+        .scrollIndicators(.hidden)
+        .padding()
+        .navigationTitle(pest.name)
+    }
+}
+
+struct SectionView: View {
+    let iconName: String
+    let title: String
+    let content: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: iconName)
+                    .foregroundStyle(.blue)
+                    .font(.title2)
+                Text(title)
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.primary)
+            }
+
+            Text(content)
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.leading)
+        }
+        .padding(.vertical, 8)
     }
 }
 
 #Preview(traits: .sampleData) {
-    PestDetailScreen(pest: PreviewData.loadPests()[0])
+    NavigationStack {
+        PestDetailScreen(pest: PreviewData.loadPests()[0])
+    }
 }
