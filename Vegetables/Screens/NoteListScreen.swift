@@ -30,6 +30,7 @@ struct NoteListScreen: View {
             }
             .onDelete(perform: deleteNote)
         }
+        .listStyle(.plain)
         .navigationTitle(myGardenVegetable.vegetable.name)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
